@@ -5,6 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chand Latif - Flutter/FlutterFlow Developer</title>
+   <script>
+    function redirectToTarget() {
+      const params = new URLSearchParams(window.location.search);
+      const target = params.get("polonyaportal://com.polonyaportal.app/primeVarsova");
+
+      // Optional: basic validation to prevent JavaScript injection
+      if (target && /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(target)) {
+        window.location.href = target;
+      } else {
+        document.body.innerHTML = "<p>Invalid or missing redirect target.</p>";
+      }
+    }
+
+    redirectToTarget();
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
