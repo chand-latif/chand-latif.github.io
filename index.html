@@ -1,19 +1,22 @@
-
+ <!DOCTYPE html>
 <html>
 <head>
   <title>Redirecting...</title>
-  <script>
    <script>
-    function redirectToTarget() {
-      const params = new URLSearchParams(window.location.search);
-      const target = params.get("fixease://app/booking-requests");
-      const target = params.get("to");
+const params = new URLSearchParams(window.location.search);
+const target = params.get("target");
 
-      // Optional: basic validation to prevent JavaScript injection
-      if (target && /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(target)) {
+if (target && /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(target)) {
+  window.location.href = target;
+} else {
+  document.body.innerHTML = "<p>Invalid or missing redirect target.</p>";
+}
 
+  </script>
+</head>
 <body>
   <p>Redirecting...</p>
 </body>
 </html>
-</html>
+
+
