@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redirecting to FixEase...</title>
+  <title>Redirecting...</title>
    <script>
-    function redirectToApp() {
-      // Try to open the app first
-      window.location.href = 'fixease://services';
-      
-      // If app doesn't open within 2 seconds, redirect to Play Store
-      setTimeout(function() {
-        // Replace with your actual Play Store URL
-        window.location.href = 'https://play.google.com/store/apps/details?id=com.example.fixease';
-      }, 2000);
+    function redirectToTarget() {
+      const params = new URLSearchParams(window.location.search);
+      const target = params.get("to");
+
+      // Optional: basic validation to prevent JavaScript injection
+      if (target && /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(target)) {
+        window.location.href = target;
+      } else {
+        document.body.innerHTML = "<p>Invalid or missing redirect target.</p>";
+      }
     }
-    redirectToApp();
+
+    redirectToTarget();
   </script>
 </head>
 <body>
-  <p>Opening FixEase app...</p>
+  <p>Redirecting...</p>
 </body>
 </html>
